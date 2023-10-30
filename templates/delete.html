@@ -1,0 +1,17 @@
+<!-- delete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Producto{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Eliminar Producto</h1>
+    <p>¿Está seguro que desea eliminar este producto?</p>
+    <form method="POST">
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger">Sí, Eliminar Producto</button>
+        </div>
+    </form>
+    <a href="{{ url_for('delete', id=product.id) }}" class="btn btn-secondary mt-3">Cancelar</a>
+</div>
+{% endblock %}

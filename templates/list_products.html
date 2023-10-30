@@ -1,0 +1,41 @@
+<!-- list_products.html -->
+{% extends 'base.html' %}
+
+{% block title %}Lista de Productos{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Lista de Productos</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>
+                        <img src="{{ url_for('static', filename='archivos/' + product.imagen) }}" alt="{{ product.nombre }}" class="img-thumbnail" width="50">
+                    </td>
+                    <td>{{ product.nombre }}</td>
+                    <td>{{ product.descripcion }}</td>
+                    <td>
+                        <a href="{{ url_for('read', id=product.id) }}" class="btn btn-primary">Ver</a>
+                        <a href="{{ url_for('update', id=product.id) }}" class="btn btn-success">Editar</a>
+                        <form method="POST" action="{{ url_for('delete', id=product.id) }}" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este producto?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{{ url_for('create') }}" class="btn btn-success">Agregar Producto</a>
+{% endblock %}

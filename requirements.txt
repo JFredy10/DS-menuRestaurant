@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+psycopg2
+SQLAlchemy
+Jinja2
+starlette
+pydantic
+requests
+gunicorn
+python-multipart
+python-dotenv

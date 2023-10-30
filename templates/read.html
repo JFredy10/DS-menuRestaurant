@@ -1,0 +1,18 @@
+<!-- read.html -->
+{% extends 'base.html' %}
+
+{% block title %}Detalles del Producto{% endblock %}
+
+{% block content %}
+    <h1>Detalles del Producto</h1>
+    <h2>{{ product.nombre }}</h2>
+    <p>Descripción: {{ product.descripcion }}</p>
+    <p>Precio: ${{ product.precio }}</p>
+    <img src="{{ url_for('static', filename='archivos/' + product.imagen) }}" alt="{{ product.nombre }}" width="200">
+    <a href="{{ url_for('update', id=product.id) }}">Editar Producto</a>
+    <form method="POST" action="{{ url_for('delete', id=product.id) }}">
+        <input type="submit" value="Eliminar Producto">
+    </form>
+{% endblock %}
+
+

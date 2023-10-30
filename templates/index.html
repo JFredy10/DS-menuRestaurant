@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Menus{% endblock %}
+
+{% block content %}
+
+<div class="container p-2">
+    <div class="text-center">
+        <h1 class="mt-3">Menus</h1>
+    </div>
+</div>
+
+<div class="row p-5">
+    {% for product in products %}
+    <div class="col-md-4 mb-5"> <!-- Dividir en 3 columnas (col-md-4) -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='archivos/' + product.imagen) }}" alt="{{ product.nombre }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.nombre }}</h5>
+                <p class="card-text">{{ product.descripcion }}</p>
+            </div>
+            <div class="card-footer">
+                <p class="card-price">Precio: ${{ product.precio }}</p>
+                <a href="{{ url_for('read', id=product.id) }}" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
